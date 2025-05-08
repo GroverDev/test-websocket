@@ -11,7 +11,7 @@ import { io } from 'socket.io-client';
 
 const messages = ref<string[]>([]);
 const socket = ref<ReturnType<typeof io> | null>(null);
-const wsUrl = 'wss://ticket.csbp.com.bo/?EIO=4&transport=websocket'; // Adjust if your Socket.IO server has a specific path
+const wsUrl = 'wss://wspagos.csbp.com.bo'; // Adjust if your Socket.IO server has a specific path
 
 onMounted(() => {
   connectSocketIO();
@@ -20,7 +20,7 @@ onMounted(() => {
 function connectSocketIO() {
   messages.value.push('Intentando conectar con Socket.IO...');
 
-  socket.value = io(wsUrl, {
+  socket.value = io(wsUrl, {// Adjust if your Socket.IO server has a specific path
     transports: ['websocket'], // Optionally force WebSocket transport
     autoConnect: true,
   });
